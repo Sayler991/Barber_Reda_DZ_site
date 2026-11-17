@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Barber Reda DZ — Tlemcen · Rendez-vous en ligne (maquette)</title>
+  <meta name="description" content="Barber Reda DZ, Tlemcen : prestations, photos, avis et réservation en ligne.">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+  <div class="demo-bar">Maquette de démonstration · les réservations restent dans ce navigateur · <button type="button" id="resetDemo">effacer les RDV de démo</button></div>
+  <header class="top">
+    <a class="logo" href="#accueil" aria-label="Barber Reda DZ, accueil">REDA DZ<small>barbershop</small></a>
+    <nav class="nav" aria-label="Sections"><a href="#prestations">Prestations</a><a href="#galerie">Photos</a><a href="#avis">Avis</a><a href="#infos">Infos</a><a href="#contact">Contact</a></nav>
+    <a class="btn btn-red sm" href="#reserver">Réserver</a>
+  </header>
+  <main id="accueil">
+    <section class="hero">
+      <img class="hero-img" src="images/hero-1100.webp" srcset="images/hero-1100.webp 1100w, images/hero-1600.webp 1600w" sizes="100vw" alt="Coupe bouclée réalisée au salon, devant le mur en briques" fetchpriority="high">
+      <div class="hero-shade"></div>
+      <div class="hero-txt">
+        <p class="kicker">Barbier · Tlemcen</p>
+        <h1>Barber Reda DZ</h1>
+        <p class="rating-line"><span class="stars" aria-hidden="true">★</span> <b>5,0</b> · 22 avis Google</p>
+        <p class="hero-sub">Bienvenue ! Choisissez votre prestation, votre barbier et votre heure en quelques secondes.</p>
+        <div class="hero-cta"><a class="btn btn-red" href="#reserver">Prendre rendez-vous</a><a class="btn btn-ghost" href="tel:0549223525">Appeler</a></div>
+        <div class="hero-chips"><span class="chip" id="openNow"></span><span class="chip chip-next" id="nextSlot" hidden></span></div>
+      </div>
+    </section>
+    <section class="quick"><div><b>5,0 ★</b><span>22 avis Google</span></div><div><b>6j/7</b><span>fermé le vendredi</span></div><div><b>24h/24</b><span>réservation en ligne</span></div></section>
+    <div class="layout">
+    <section class="sec rv" id="prestations">
+      <h2>Prestations</h2>
+      <p class="sec-sub">Choisissez une prestation, puis votre barbier et votre heure.</p>
+      <p class="note" id="priceNote" hidden>Prix et durées d’exemple (tarifs courants à Tlemcen), à confirmer avec le salon.</p>
+      <div class="svc-list" id="svcList"><p class="muted">Chargement…</p></div>
+    </section>
+    <section class="sec side" id="reserver">
+      <h2>Réserver</h2>
+      <p class="sec-sub">En ligne, 24h/24. Créneaux toutes les 30 min. Prénoms des barbiers à confirmer.</p>
+      <div class="book" id="book">
+        <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+        <ol class="steps" id="steps"><li data-s="1">Prestation</li><li data-s="2">Barbier</li><li data-s="3">Créneau</li><li data-s="4">Vos infos</li></ol>
+        <div class="pane" id="pane"><p class="muted">Chargement…</p></div>
+      </div>
+    </section>
+    <section class="sec rv" id="galerie">
+      <h2>Le salon en photos</h2>
+      <div class="gal" id="gal"><button data-big="images/p2-1100.webp"><img loading="lazy" src="images/p2-600.webp" alt="Coupe avec raie et dégradé"></button><button data-big="images/p8-1100.webp"><img loading="lazy" src="images/p8-600.webp" alt="Coupe texturée avec dégradé"></button><button data-big="images/p6-1100.webp"><img loading="lazy" src="images/p6-600.webp" alt="Dégradé net vu de côté"></button><button data-big="images/p10-1100.webp"><img loading="lazy" src="images/p10-600.webp" alt="Poste de travail et tondeuses"></button><button data-big="images/p5-1100.webp"><img loading="lazy" src="images/p5-600.webp" alt="Tondeuses alignées sur le plan de travail"></button><button data-big="images/p3-1100.webp"><img loading="lazy" src="images/p3-600.webp" alt="Le salon et son fauteuil de barbier"></button><button data-big="images/p1-1100.webp"><img loading="lazy" src="images/p1-600.webp" alt="Avant / après d’une coupe"></button></div>
+      <p class="credit">Photos : fiche Google Maps du salon.</p>
+    </section>
+    <section class="sec rv" id="avis">
+      <h2>Avis clients</h2>
+      <div class="score"><b>5,0</b><div><span class="stars">★★★★★</span><span class="muted">22 avis sur Google</span></div></div>
+      <div class="reviews"><blockquote><p>« Super salon, accueil au top, coiffeur souriant et avenant. Très compétent, de vrais techniciens, c’est des artistes. Je recommande Barber Reda DZ à tous ceux qui sont à Tlemcen. »</p><cite>Hichame Aittabi</cite></blockquote><blockquote><p>« Très bon coiffeur, je conseille fortement, beaucoup d’expérience et à l’écoute. »</p><cite>bil nob</cite></blockquote><blockquote><p>« Coiffeur professionnel ! »</p><cite>Mohamed Boudjema</cite></blockquote><blockquote><p>« Très bon coiffeur ⚡❤️ »</p><cite>Belaidi Hadi</cite></blockquote></div>
+      <a class="link" href="https://www.google.com/maps?cid=9504309533057930812" target="_blank" rel="noopener">Voir tous les avis sur Google</a>
+    </section>
+    <section class="sec rv" id="infos">
+      <h2>Horaires et accès</h2>
+      <div class="info-grid">
+        <div class="card"><h3>Horaires</h3><table class="hours" id="hours"></table></div>
+        <div class="card"><h3>Adresse</h3><p>Barber Reda DZ<br>Rue Aïn Nedjar, Tlemcen 13007<br><span class="muted">Plus code : VMJF+F7 Tlemcen</span></p>
+          <a class="btn btn-dark sm" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=34.8812273,-1.3268196">Itinéraire</a></div>
+      </div>
+      <iframe class="map" title="Carte Google Maps : Barber Reda DZ, Tlemcen" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Barber+Reda+DZ%2C+Rue+Aïn+Nedjar%2C+Tlemcen&amp;output=embed"></iframe>
+    </section>
+    <section class="sec rv" id="contact">
+      <h2>Contact</h2>
+      <div class="info-grid">
+        <div class="card"><h3>Nous joindre</h3><ul class="contact-list"><li>Téléphone : <a class="link" href="tel:0549223525">0549 22 35 25</a></li><li>Facebook : <a class="link" href="https://www.facebook.com/redaaissa13" target="_blank" rel="noopener">Barber Reda Dz</a></li><li>Instagram : <a class="link" href="https://www.instagram.com/barber_reda_dz/" target="_blank" rel="noopener">@barber_reda_dz</a></li><li>Email : <a class="link" href="mailto:redabarberaissa@gmail.com">redabarberaissa@gmail.com</a> <span class="muted">(page Facebook)</span></li></ul>
+          <a class="btn btn-red sm" href="tel:0549223525">Appeler le salon</a></div>
+        <div class="card"><h3>Le salon</h3><p>Barber Reda DZ est un salon de coiffure homme rue Aïn Nedjar, à Tlemcen. Sur sa page Facebook, le salon se présente comme ambassadeur de la marque Wahl (@wahl_mea). Les avis Google saluent l’accueil, l’écoute et le niveau technique.</p><img class="brand-logo" loading="lazy" src="images/logo-original.jpg" alt="Logo Barber Reda DZ (visuel de la fiche Google)"></div>
+      </div>
+    </section>
+    </div>
+  </main>
+  <footer class="foot"><p><b>Barber Reda DZ</b> · Tlemcen · <a href="tel:0549223525">0549 22 35 25</a></p><p class="muted">Maquette de démonstration, non publiée.</p></footer>
+  <a class="call-fab" href="tel:0549223525" aria-label="Appeler le salon au 0549 22 35 25"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M7.2 3.4c.4-.4 1-.5 1.5-.3l2.2 1c.5.2.8.7.8 1.3l-.2 2.1c0 .4-.2.8-.5 1L9.6 10c.8 1.7 2.1 3.1 3.8 4l1.5-1.4c.3-.3.7-.5 1.1-.5l2.1.2c.5 0 1 .3 1.3.8l1 2.2c.2.5.1 1.1-.3 1.5l-1.3 1.3c-.4.4-1 .6-1.6.5-3.5-.4-6.8-2.2-9.3-4.7S4.3 8.8 3.9 5.3c-.1-.6.1-1.2.5-1.6L7.2 3.4Z"/></svg><span>Appeler</span></a>
+  <div class="lb" id="lb" hidden><button class="lb-x" aria-label="Fermer">×</button><img alt=""></div>
+  <script src="config.js"></script>
+  <script src="js/demo-api.js"></script>
+  <script src="js/app.js"></script>
+  <script>document.getElementById('resetDemo').onclick=function(){if(confirm('Effacer les rendez-vous de démonstration ?')){DEMO_API.reset();location.reload();}};</script>
+</body>
+</html>
