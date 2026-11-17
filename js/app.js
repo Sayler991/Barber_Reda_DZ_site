@@ -1,8 +1,8 @@
-/* Maquette locale — prestations, horaires et réservation (démo : données dans le navigateur, js/demo-api.js). */
+/* Barber Reda DZ — prestations, horaires et réservation en ligne (Supabase, fonctions public.barberreda_*). */
 (function () {
   'use strict';
   var C = window.SITE_CONFIG, OFF = C.TZ_OFFSET_MIN * 60000, STEP = C.STEP_MIN;
-  var sb = window.DEMO_API;
+  var sb = window.supabase.createClient(C.SUPABASE_URL, C.SUPABASE_ANON_KEY);
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var DAYS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
   var MONTHS = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
@@ -106,7 +106,7 @@
   }
   function loadBusy() {
     var n = localNow(), from = new Date(toUtc(n, 0)).toISOString(), to = new Date(toUtc(addDays(n, C.DAYS_AHEAD + 1), 0)).toISOString();
-    return sb.rpc('cutbarber_busy', { p_from: from, p_to: to }).then(function (r) {
+    return sb.rpc('barberreda_busy', { p_from: from, p_to: to }).then(function (r) {
       if (r.error) throw r.error;
       BUSY = (r.data || []).map(function (x) { return { barber_id: x.barber_id, s: Date.parse(x.starts_at), e: Date.parse(x.ends_at) }; });
     });
@@ -134,7 +134,7 @@
       var days = h('div', { class: 'days' }), slotsBox = h('div'), n = localNow(), first = null;
       for (var i = 0; i < C.DAYS_AHEAD; i++) (function (day) {
         var sl = slotsFor(day), btn = h('button', { class: 'day', type: 'button', disabled: !sl.length, 'data-k': dayKey(day) },
-          h('small', { text: i === 0 ? 'auj.' : DAYS[day.dow].slice(0, 3) }), h('b', { text: String(day.d) }), h('em', { text: sl.length ? MONTHS[day.m] : 'complet' }));
+          h('small', { text: i === 0 ? 'auj.' : DAYS[day.dow].slice(0, 3) }), h('b', { text: String(day.d) }), h('em', { text: sl.length ? MONTHS[day.m] : ((hoursOf(day.dow) || { closed: true }).closed ? 'fermé' : 'complet') }));
         btn.onclick = function () { S.day = day; showSlots(); };
         days.appendChild(btn); if (sl.length && !first) first = day;
       })(addDays(n, i));
@@ -168,7 +168,7 @@
         if (nm.length < 2) { err.textContent = 'Indiquez votre nom.'; return name.focus(); }
         if (!/^\+?[0-9 .-]{8,20}$/.test(ph)) { err.textContent = 'Numéro de téléphone invalide.'; return tel.focus(); }
         go.disabled = true; go.textContent = 'Envoi…';
-        sb.rpc('cutbarber_book', { p_service_id: S.service.id, p_barber_id: S.barber == null ? null : S.barber, p_starts_at: new Date(S.start).toISOString(), p_name: nm, p_phone: ph }).then(function (r) {
+        sb.rpc('barberreda_book', { p_service_id: S.service.id, p_barber_id: S.barber == null ? null : S.barber, p_starts_at: new Date(S.start).toISOString(), p_name: nm, p_phone: ph }).then(function (r) {
           if (r.error) {
             var m = r.error.message || '';
             go.disabled = false; go.textContent = 'Confirmer le rendez-vous';
@@ -203,7 +203,7 @@
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
     [].forEach.call(document.querySelectorAll('.rv'), function (el) { io.observe(el); });
   } else [].forEach.call(document.querySelectorAll('.rv'), function (el) { el.classList.add('in'); });
-  sb.rpc('cutbarber_public_info').then(function (r) {
+  sb.rpc('barberreda_public_info').then(function (r) {
     if (r.error || !r.data) { $('#pane').innerHTML = '<p class="err">Réservation indisponible pour le moment. Appelez le ' + C.PHONE_DISPLAY + '.</p>'; return; }
     INFO = r.data; renderStatic();
     return loadBusy().then(function () { setStep(1); heroNext(); });
